@@ -1,17 +1,121 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Tic-Tac-Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <h1>Tic Tac Toe</h1>
+
+  <p id='message'></p>
+
+  <form id="sign-up" class="border">
+    <fieldset>
+      <legend>Sign up!</legend>
+      <input type="text" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+      <input type="submit" value="Sign up" placeholder="Sign Up!">
+    </fieldset>
+  </form>
+
+
+  <form id="sign-in" class="border">
+    <fieldset>
+      <legend>Sign In!</legend>
+      <input type="text" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="submit" value="Sign In" placeholder="Sign In!">
+    </fieldset>
+  </form>
+
+
+  <form id="sign-out" class="border">
+    <fieldset>
+      <legend>Sign out!</legend>
+      <input type="submit" value="Sign Out" placeholder="Sign Out!">
+    </fieldset>
+  </form>
+
+
+  <form id="change-password" class="border">
+    <fieldset>
+      <legend>Change Password!</legend>
+      <input type="password" name="passwords[old]" placeholder="Old Password">
+      <input type="password" name="passwords[new]" placeholder="New Password">
+      <input type="submit" value="Change" placeholder="Change Password">
+    </fieldset>
+  </form>
+
+
+
+
+
+  <div id="playersTurn">&nbsp;</div>
+  <div id="winnerIs"></div>
+  <table id="Table" align="center">
+    <table>
+      <tr>
+        <td id="cellOne" class="cell" onclick="cellClick(this);" onMouseOver="mouseMotion(this, 'over');" onMouseOut="mouseMotion(this, 'out');&nbsp;">
+        </td>
+        <td id="cellTwo" class="cell" onclick="cellClick(this);" onMouseOver="mouseMotion(this, 'over');" onMouseOut="mouseMotion(this, 'out');">
+        </td>
+        <td id="cellThree" class="cell" onclick="cellClick(this);" onMouseOver="mouseMotion(this, 'over');" onMouseOut="mouseMotion(this, 'out');"></td>
+      </tr>
+      <tr>
+        <td id="cellFour" class="cell" onclick="cellClick(this);" onMouseOver="mouseMotion(this, 'over');" onMouseOut="mouseMotion(this, 'out');">
+        </td>
+        <td id="cellFive" class="cell" onclick="cellClick(this);" onMouseOver="mouseMotion(this, 'over');" onMouseOut="mouseMotion(this, 'out');">
+        </td>
+        <td id="cellSix" class="cell" onclick="cellClick(this);" onMouseOver="mouseMotion(this, 'over');" onMouseOut="mouseMotion(this, 'out');">
+        </td>
+      </tr>
+      <tr>
+        <td id="cellSeven" class="cell" onclick="cellClick(this);" onMouseOver="mouseMotion(this, 'over');" onMouseOut="mouseMotion(this, 'out');">
+        </td>
+        <td id="cellEight" class="cell" onclick="cellClick(this);" onMouseOver="mouseMotion(this, 'over');" onMouseOut="mouseMotion(this, 'out');">
+        </td>
+        <td id="cellNine" class="cell" onclick="cellClick(this);" onMouseOver="mouseMotion(this, 'over');" onMouseOut="mouseMotion(this, 'out');">
+        </td>
+      </tr>
+
+
+
+
+
+
+      <input id="newGameBtn" type="button" value="Start New Game" onclick="startNewGame();" />
+
+
+      <div class="container">
+        <div class=row>
+          <div class="col-4 box"></div>
+            <div class="col-4 box"></div>
+              <div class="col-4 box"></div>
+          </div>
+          <div class=row>
+          <div class="col-4 box"></div>
+            <div class="col-4 box"></div>
+              <div class="col-4 box"></div>
+        </div>
+      </div>
+      <div class=row>
+      <div class="col-4 box"></div>
+        <div class="col-4 box"></div>
+          <div class="col-4 box"></div>
+      </div>
+
+
+
+</body>
+
 </html>

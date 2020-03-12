@@ -14,3 +14,5 @@ require('./assets/scripts/app.js')
 
 // styles
 require('./assets/styles/index.scss')
+
+document.getElementById(cell.One).innerHTML = nextTurn;
