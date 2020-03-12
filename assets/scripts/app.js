@@ -12,24 +12,5 @@ $(() => {
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('.box').on('click', authEvents.onBoxClick)
+  $('#new-game').on('submit', authEvents.onNewGame)
 })
-
-
-
-
-
-const game = {
-  playerX: '',
-  playerO: '',
-  currentPlayer: '',
-  moves: 1,
-}
-
-function firstMove () {
-  $('#fifth').html(game.playerX);
-  $('#fifth').removeAttr('onClick');
-}
-
-function setCurrPl(curr) {
-  game.currentPlayer = curr;
-}

@@ -52,6 +52,20 @@ const changePasswordFailure = function (error) {
   $('#message').addClass('failure')
   console.log('changePasswordFailure error is: ', error)
 }
+const newGameSuccess = function (data) {
+  $('#message').text('New Game Successfull')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+  console.log('newGameSuccess data is: ', data)
+  store.user = data.user
+}
+const newGameFailure = function (error) {
+  $('#message').text('Error on new game')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+  console.log('newGameFailure error is: ', error)
+}
+
 
 module.exports = {
   signUpSuccess,
@@ -61,5 +75,11 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  newGameSuccess,
+  newGameFailure,
+  // // winnerMessage,
+  // drawMessage,
+  // currentPlayerTurn,
+  // currentPlayer
 }
