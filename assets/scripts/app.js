@@ -12,7 +12,6 @@ $(() => {
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('.box').on('click', authEvents.onBoxClick)
+  $('.box').on('click', authEvents.checkWinner)
   $('#new-game').on('submit', authEvents.onNewGame)
-  $('#check-winner').on('submit', authEvents.onWinner)
-  $('#check-winner').on('submit', authEvents.onWinner)
 })

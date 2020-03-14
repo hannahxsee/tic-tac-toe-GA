@@ -47,14 +47,19 @@ const onNewGame = function (event) {
     .catch(ui.newGameFailure)
 }
 
-const onWinner = function () {
-  event.preventDefault()
-  console.log('Winner')
-  const data = getFormFields(event.target)
-  api.winner()
-    .then(ui.winnerXSuccess)
-    .catch(ui.winnerOSuccess)
-}
+// const onWinner = function () {
+//   event.preventDefault()
+//   console.log('Winner')
+//   const data = getFormFields(event.target)
+//   api.winner()
+//     .then(ui.winnerXSuccess)
+//     .catch(ui.winnerOSuccess)
+// }
+// const onDraw = function (gameBoard) {
+// if (store.game.over) {
+//   ui.gameDraw()
+// }
+// }
 
 let currentPlayer = 'X'
 
@@ -63,62 +68,81 @@ const gameBoard = [
   '', '', '',
   '', '', ''
 ]
+let gameOver = false
 
-const onWinner = function (gameBoard) {
-  console.log('checking for winner')
+
+const isDraw = function (gameBoard) {
+    for (let i = 0; i < gameBoard.length; i++) {
+      if (gameBoard[i] === '')
+      return
+    }
+    if (gameOver === false) {
+      ui.gameDraw()
+    }
+}
+
+const checkWinner = function (gameBoard) {
   if ((gameBoard[0] === 'X' || gameBoard[0] === 'O') && gameBoard[0] === gameBoard[1] && gameBoard[0] === gameBoard[2]) {
-    store.game.over = true
+    gameOver = true
     if (gameBoard[0] === 'X') {
-      ui.WinnerXSuccess()
+      console.log('Winner')
+      ui.winnerXSuccess()
     } else {
       ui.winnerOSuccess()
     }
   } else if ((gameBoard[3] === 'X' || gameBoard[3] === 'O') && gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5]) {
-    store.game.over = true
+    gameOver = true
     if (gameBoard[0] === 'X') {
-      ui.WinnerXSuccess()
+      console.log('Winner')
+      ui.winnerXSuccess()
     } else {
       ui.winnerOSuccess()
     }
   } else if ((gameBoard[6] === 'X' || gameBoard[6] === 'O') && gameBoard[6] === gameBoard[7] && gameBoard[6] === gameBoard[8]) {
-    store.game.over = true
+    gameOver = true
     if (gameBoard[0] === 'X') {
-      ui.WinnerXSuccess()
+      console.log('Winner')
+      ui.winnerXSuccess()
     } else {
       ui.winnerOSuccess()
     }
   } else if ((gameBoard[0] === 'X' || gameBoard[0] === 'O') && gameBoard[0] === gameBoard[3] && gameBoard[0] === gameBoard[6]) {
-    store.game.over = true
+    gameOver = true
     if (gameBoard[0] === 'X') {
-      ui.WinnerXSuccess()
+      console.log('Winner')
+      ui.winnerXSuccess()
     } else {
       ui.winnerOSuccess()
     }
   } else if ((gameBoard[1] === 'X' || gameBoard[1] === 'O') && gameBoard[1] === gameBoard[4] && gameBoard[1] === gameBoard[7]) {
-    store.game.over = true
+    gameOver = true
     if (gameBoard[0] === 'X') {
-      ui.WinnerXSuccess()
+      console.log('Winner')
+      ui.winnerXSuccess()
     } else {
       ui.winnerOSuccess()
     }
   } else if ((gameBoard[2] === 'X' || gameBoard[2] === 'O') && gameBoard[2] === gameBoard[5] && gameBoard[2] === gameBoard[8]) {
-    store.game.over = true
+    gameOver = true
     if (gameBoard[0] === 'X') {
-      ui.WinnerXSuccess()
+      console.log('Winner')
+      ui.winnerXSuccess()
     } else {
       ui.winnerOSuccess()
     }
   } else if ((gameBoard[0] === 'X' || gameBoard[0] === 'O') && gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8]) {
-    store.game.over = true
+    gameOver = true
     if (gameBoard[0] === 'X') {
-      ui.WinnerXSuccess()
+      console.log('Winner')
+      ui.winnerXSuccess()
     } else {
       ui.winnerOSuccess()
     }
   } else if ((gameBoard[2] === 'X' || gameBoard[2] === 'O') && gameBoard[2] === gameBoard[4] && gameBoard[2] === gameBoard[6]) {
-    store.game.over = true
+    gameOver = true
     if (gameBoard[0] === 'X') {
-      ui.WinnerXSuccess()
+      console.log('Winner')
+      ui.winnerXSuccess()
     } else {
       ui.winnerOSuccess()
     }
@@ -145,12 +169,16 @@ const onBoxClick = function (event) {
     gameBoard[event.target.id] = 'X'
     currentPlayer = 'O'
     console.log(gameBoard)
+    checkWinner(gameBoard)
+    isDraw(gameBoard)
   }
   if (($(event.target).text() === '' || $(event.target).text() !== 'X') && currentPlayer === 'O') {
     $(event.target).text('O')
     gameBoard[event.target.id] = 'O'
     currentPlayer = 'X'
     console.log(gameBoard)
+    checkWinner(gameBoard)
+    isDraw(gameBoard)
   }
 }
 
@@ -162,5 +190,7 @@ module.exports = {
   onBoxClick,
   onNewGame,
   gameBoard,
-  onWinner
+  // onWinner,
+  checkWinner,
+  gameOver
 }

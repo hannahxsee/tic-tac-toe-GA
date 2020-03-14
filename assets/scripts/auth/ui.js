@@ -78,12 +78,12 @@ const winnerOSuccess = function () {
 const xMove = function () {
   $('#message').text('Player X Turn')
   $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('#message').addClass('playerXTurn')
 }
 const oMove = function () {
   $('#message').text('Player O Turn')
   $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('#message').addClass('playerOTurn')
 }
 const gameDraw = function () {
   $('#message').text('Tie!')
@@ -108,7 +108,7 @@ const clickError = function (error) {
   $('#message').addClass('failure')
   console.log(' clickError error is: ', error)
 }
-const gameOver = function (data) {
+const onGameOver = function (data) {
   $('#message').text('Game Over! Player Wins!')
   $('#message').removeClass()
   $('#message').addClass('success')
@@ -134,5 +134,5 @@ module.exports = {
   engineUpdateSuccess,
   engineUpdateFailure,
   clickError,
-  gameOver
+  onGameOver
 }
