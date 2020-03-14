@@ -65,7 +65,55 @@ const newGameFailure = function (error) {
   $('#message').addClass('failure')
   console.log('newGameFailure error is: ', error)
 }
-
+const winnerXSuccess = function () {
+  $('#message').text('Player X Wins!')
+  $('#message').removeClass()
+  $('#message').addClass('xMove')
+}
+const winnerOSuccess = function () {
+  $('#message').text('Player O Wins!')
+  $('#message').removeClass()
+  $('#message').addClass('oMove')
+}
+const xMove = function () {
+  $('#message').text('Player X Turn')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+}
+const oMove = function () {
+  $('#message').text('Player O Turn')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+}
+const gameDraw = function () {
+  $('#message').text('Tie!')
+  $('#message').removeClass()
+  $('#message').addClass('draw')
+}
+const engineUpdateSuccess = function (data) {
+  $('#message').text('Updated Successfully')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+  console.log('engineUpdateSuccess data is: ', data)
+}
+const engineUpdateFailure = function (error) {
+  $('#message').text('Update Failure')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+  console.log('engineUpdateFailure error is: ', error)
+}
+const clickError = function (error) {
+  $('#message').text('Please click on one of the boxes!')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+  console.log(' clickError error is: ', error)
+}
+const gameOver = function (data) {
+  $('#message').text('Game Over! Player Wins!')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+  console.log('gameOver data is: ', data)
+}
 
 module.exports = {
   signUpSuccess,
@@ -78,8 +126,13 @@ module.exports = {
   changePasswordFailure,
   newGameSuccess,
   newGameFailure,
-  // // winnerMessage,
-  // drawMessage,
-  // currentPlayerTurn,
-  // currentPlayer
+  winnerXSuccess,
+  winnerOSuccess,
+  xMove,
+  oMove,
+  gameDraw,
+  engineUpdateSuccess,
+  engineUpdateFailure,
+  clickError,
+  gameOver
 }

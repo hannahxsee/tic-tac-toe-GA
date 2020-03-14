@@ -13,4 +13,6 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('.box').on('click', authEvents.onBoxClick)
   $('#new-game').on('submit', authEvents.onNewGame)
+  $('#check-winner').on('submit', authEvents.onWinner)
+  $('#check-winner').on('submit', authEvents.onWinner)
 })

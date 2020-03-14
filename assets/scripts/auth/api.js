@@ -54,11 +54,23 @@ const newGame = function () {
     }
   })
 }
+const winner = function (data) {
+  console.log('In api.js')
+  return $.ajax({
+    url: config.apiUrl + '/check-winner',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword,
-  newGame
+  newGame,
+  winner
 }

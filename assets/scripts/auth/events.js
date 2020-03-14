@@ -1,6 +1,7 @@
 'use strict'
 
 const getFormFields = require('../../../lib/get-form-fields')
+const store = require('../store')
 
 const api = require('./api')
 const ui = require('./ui')
@@ -37,26 +38,92 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
+const onNewGame = function (event) {
+  event.preventDefault()
+  console.log('New Game')
+  const data = getFormFields(event.target)
+  api.newGame(data)
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
 
+const onWinner = function () {
+  event.preventDefault()
+  console.log('Winner')
+  const data = getFormFields(event.target)
+  api.winner()
+    .then(ui.winnerXSuccess)
+    .catch(ui.winnerOSuccess)
+}
 
+let currentPlayer = 'X'
 
-
-
-let gameBoard = [
+const gameBoard = [
   '', '', '',
   '', '', '',
   '', '', ''
 ]
 
-let currentPlayer = 'X'
-
-
-const winnerMessage = () => `Player ${currentPlayer} has won!`;
-const drawBoard = () => `Game ended in a draw!`;
-const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
-
-
-
+const onWinner = function (gameBoard) {
+  console.log('checking for winner')
+  if ((gameBoard[0] === 'X' || gameBoard[0] === 'O') && gameBoard[0] === gameBoard[1] && gameBoard[0] === gameBoard[2]) {
+    store.game.over = true
+    if (gameBoard[0] === 'X') {
+      ui.WinnerXSuccess()
+    } else {
+      ui.winnerOSuccess()
+    }
+  } else if ((gameBoard[3] === 'X' || gameBoard[3] === 'O') && gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5]) {
+    store.game.over = true
+    if (gameBoard[0] === 'X') {
+      ui.WinnerXSuccess()
+    } else {
+      ui.winnerOSuccess()
+    }
+  } else if ((gameBoard[6] === 'X' || gameBoard[6] === 'O') && gameBoard[6] === gameBoard[7] && gameBoard[6] === gameBoard[8]) {
+    store.game.over = true
+    if (gameBoard[0] === 'X') {
+      ui.WinnerXSuccess()
+    } else {
+      ui.winnerOSuccess()
+    }
+  } else if ((gameBoard[0] === 'X' || gameBoard[0] === 'O') && gameBoard[0] === gameBoard[3] && gameBoard[0] === gameBoard[6]) {
+    store.game.over = true
+    if (gameBoard[0] === 'X') {
+      ui.WinnerXSuccess()
+    } else {
+      ui.winnerOSuccess()
+    }
+  } else if ((gameBoard[1] === 'X' || gameBoard[1] === 'O') && gameBoard[1] === gameBoard[4] && gameBoard[1] === gameBoard[7]) {
+    store.game.over = true
+    if (gameBoard[0] === 'X') {
+      ui.WinnerXSuccess()
+    } else {
+      ui.winnerOSuccess()
+    }
+  } else if ((gameBoard[2] === 'X' || gameBoard[2] === 'O') && gameBoard[2] === gameBoard[5] && gameBoard[2] === gameBoard[8]) {
+    store.game.over = true
+    if (gameBoard[0] === 'X') {
+      ui.WinnerXSuccess()
+    } else {
+      ui.winnerOSuccess()
+    }
+  } else if ((gameBoard[0] === 'X' || gameBoard[0] === 'O') && gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8]) {
+    store.game.over = true
+    if (gameBoard[0] === 'X') {
+      ui.WinnerXSuccess()
+    } else {
+      ui.winnerOSuccess()
+    }
+  } else if ((gameBoard[2] === 'X' || gameBoard[2] === 'O') && gameBoard[2] === gameBoard[4] && gameBoard[2] === gameBoard[6]) {
+    store.game.over = true
+    if (gameBoard[0] === 'X') {
+      ui.WinnerXSuccess()
+    } else {
+      ui.winnerOSuccess()
+    }
+  }
+}
 
 // const winningConditions = [
 //   [0, 1, 2],
@@ -73,7 +140,6 @@ const onBoxClick = function (event) {
   console.log('Box is Clicked')
   // $(event.target).text('X')
 
-
   if (($(event.target).text() === '' || $(event.target).text() !== 'O') && currentPlayer === 'X') {
     $(event.target).text('X')
     gameBoard[event.target.id] = 'X'
@@ -87,19 +153,6 @@ const onBoxClick = function (event) {
     console.log(gameBoard)
   }
 }
-const onNewGame = function (event) {
-  event.preventDefault()
-  console.log('New Game')
-  const data = getFormFields(event.target)
-  api.newGame(data)
-    .then(ui.newGameSuccess)
-    .catch(ui.newGameFailure)
-}
-
-
-
-
-
 
 module.exports = {
   onSignUp,
@@ -109,8 +162,5 @@ module.exports = {
   onBoxClick,
   onNewGame,
   gameBoard,
-  winnerMessage,
-  drawBoard,
-  currentPlayerTurn
-
+  onWinner
 }
