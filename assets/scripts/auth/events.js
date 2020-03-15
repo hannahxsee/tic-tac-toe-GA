@@ -70,15 +70,14 @@ const gameBoard = [
 ]
 let gameOver = false
 
-
 const isDraw = function (gameBoard) {
-    for (let i = 0; i < gameBoard.length; i++) {
-      if (gameBoard[i] === '')
+  for (let i = 0; i < gameBoard.length; i++) {
+    if (gameBoard[i] === '')
       return
-    }
-    if (gameOver === false) {
-      ui.gameDraw()
-    }
+  }
+  if (gameOver === false) {
+    ui.gameDraw()
+  }
 }
 
 const checkWinner = function (gameBoard) {

@@ -1,7 +1,52 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Bellota+Text:300,300i,400,400i,700,700i&display=swap');
+
+body {
+  background-color: #FF8C87;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  color: #BEFF87;
+  font-family: 'Bellota Text', bold;
+  font-size: 60px;
+}
+
+h2 {
+  text-align: center;
+  color: #BEFF87;
+  font-family: 'Bellota Text', bold;
+  font-size: 45px;
+}
+
+.cssSignUp {
+  text-align: center;
+}
+
+.cssSignIn {
+  text-align: center;
+}
+
+.cssSignOut {
+  text-align: top-right;
+}
+
+.cssChangePass {
+  text-align: center;
+}
+
+.cssNewGame {
+  text-align: top-left;
+}
 
 .box {
-  border: 1px solid black;
-  height: 50px;
-  width: 50px;
+  font-family: 'Bellota Text', bold;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 0 0 1px #BEFF87;
+  border: 1px solid #BEFF87;
+  cursor: pointer;
+  line-height: 100px;
+  font-size: 60px;
 }
