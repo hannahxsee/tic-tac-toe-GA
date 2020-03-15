@@ -57,7 +57,6 @@ const newGameSuccess = function (data) {
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('newGameSuccess data is: ', data)
-  store.user = data.user
 }
 const newGameFailure = function (error) {
   $('#message').text('Error on new game')

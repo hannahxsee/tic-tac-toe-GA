@@ -48,7 +48,7 @@ const newGame = function () {
   console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/new-game',
-    method: 'POST',
+    method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
