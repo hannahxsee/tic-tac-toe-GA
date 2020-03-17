@@ -76,13 +76,9 @@ const winnerOSuccess = function () {
 }
 const xMove = function () {
   $('#message').text('Player X Turn')
-  $('#message').removeClass()
-  $('#message').addClass('playerXTurn')
 }
 const oMove = function () {
   $('#message').text('Player O Turn')
-  $('#message').removeClass()
-  $('#message').addClass('playerOTurn')
 }
 const gameDraw = function () {
   $('#message').text('Tie!')

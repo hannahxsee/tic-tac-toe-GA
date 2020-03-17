@@ -6,6 +6,7 @@ const store = require('../store')
 const api = require('./api')
 const ui = require('./ui')
 
+// create function for sign up form
 const onSignUp = function (event) {
   event.preventDefault()
   console.log('Signing Up')
@@ -14,6 +15,7 @@ const onSignUp = function (event) {
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
 }
+// create function for sign in form
 const onSignIn = function (event) {
   event.preventDefault()
   console.log('Signing In')
@@ -22,6 +24,8 @@ const onSignIn = function (event) {
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
 }
+
+// create function for sign out button
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('Signing Out')
@@ -30,6 +34,8 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
+
+// create password for change password form
 const onChangePassword = function (event) {
   event.preventDefault()
   console.log('Change Password')
@@ -38,13 +44,17 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
+// create function for new game or restart button
 const onNewGame = function (event) {
   event.preventDefault()
+  gameBoard = []
   console.log('New Game')
+  $('.box').text('')
   const data = getFormFields(event.target)
   api.newGame(data)
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
+  $('#message').text('')
 }
 
 // const onWinner = function () {
@@ -60,16 +70,17 @@ const onNewGame = function (event) {
 //   ui.gameDraw()
 // }
 // }
-
 let currentPlayer = 'X'
 
-const gameBoard = [
+let gameBoard = [
   '', '', '',
   '', '', '',
   '', '', ''
 ]
+
 let gameOver = false
 
+// create if statement inside for loop to log when the game has been won and if there was a draw
 const isDraw = function (gameBoard) {
   for (let i = 0; i < gameBoard.length; i++) {
     if (gameBoard[i] === '')
@@ -80,6 +91,7 @@ const isDraw = function (gameBoard) {
   }
 }
 
+// creation if else statement for winner
 const checkWinner = function (gameBoard) {
   if ((gameBoard[0] === 'X' || gameBoard[0] === 'O') && gameBoard[0] === gameBoard[1] && gameBoard[0] === gameBoard[2]) {
     gameOver = true
@@ -147,7 +159,6 @@ const checkWinner = function (gameBoard) {
     }
   }
 }
-
 // const winningConditions = [
 //   [0, 1, 2],
 //   [3, 4, 5],
@@ -159,10 +170,28 @@ const checkWinner = function (gameBoard) {
 //   [2, 4, 6]
 // ]
 
+let player1 = 'X'
+let player2 = 'O'
+
+const changeTurn = function () {
+  for (let i = 0; i < gameBoard.length; i++) {
+    if (gameBoard[i] === '') {
+      player1 = 'X';
+      ui.xMove()
+      if (gameBoard[i] === 'X') {
+        player2 = 'O';
+        ui.oMove()
+      } else if (gameBoard[i] === 'O') {
+        player1 = 'X';
+        ui.xMove()
+      }
+    }
+  }
+}
+
 const onBoxClick = function (event) {
   console.log('Box is Clicked')
   // $(event.target).text('X')
-
   if (($(event.target).text() === '' || $(event.target).text() !== 'O') && currentPlayer === 'X') {
     $(event.target).text('X')
     gameBoard[event.target.id] = 'X'
@@ -191,5 +220,8 @@ module.exports = {
   gameBoard,
   // onWinner,
   checkWinner,
-  gameOver
+  gameOver,
+  changeTurn,
+  player1,
+  player2
 }

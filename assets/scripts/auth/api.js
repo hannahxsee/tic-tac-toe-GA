@@ -45,13 +45,13 @@ const changePassword = function (data) {
 }
 
 const newGame = function () {
-  console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/new-game',
-    method: 'PATCH',
+    method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    }
+    },
+    data: {}
   })
 }
 const winner = function (data) {

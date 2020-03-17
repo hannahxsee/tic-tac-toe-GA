@@ -38,12 +38,18 @@ h2 {
 }
 
 .cssChangePass {
-  position: fixed; /* Fixed/sticky position */
-  right: 30px; /* Place the button 30px from the right */
+  position: fixed;
+  right: 30px;
   bottom: 800px;
-  padding: 10px; /* Some padding */
-  border-radius: 10px; /* Rounded corners */
-  font-size: 18px; /* Increase font size */
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: all ease-in-out 0.2s;
+}
+
+.cssChangePass:hover{
+  border: 1px solid #888;
+    background-color: #ddd;
 }
 
 .cssNewGame {
@@ -55,21 +61,42 @@ h2 {
   font-size: 18px; /* Increase font size */
 }
 
-.cssNewGame:hover span {
-  padding-left: 25px;
-}
 
 .box {
   font-family: 'Bellota Text', bold;
-  width: 200px;
-  height: 200px;
   border: 3px solid #BEFF87;
   cursor: pointer;
-  line-height: 100px;
-  font-size: 150px;
-  text-align: center;
+  width: 134px;
+    height: 134px;
+    display: block;
+    color: #EAEAEA;
+    font-size: 6.3em;
+    padding: 1px 27px;
 }
 
 .container {
-  grid-display: center;
+  background-color: transparent;
+  margin: 50px auto;
+}
+
+.winnerOSuccess {
+  color: #BEFF87;
+  font-family: 'Bellota Text', bold;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.winnerXSuccess {
+  color: #BEFF87;
+  font-family: 'Bellota Text', bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.gameDraw {
+  color: #BEFF87;
+  font-family: 'Bellota Text', bold;
+  font-size: 20px;
+  text-align: center;
 }
